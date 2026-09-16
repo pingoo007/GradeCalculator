@@ -34,6 +34,7 @@ public class GradeCalculator {
 		System.out.println("----------------------");
 		
 		System.out.println("Loading configuration from gradeconfig.txt");
+		 
 		
 		try (PrintWriter writer = new PrintWriter("grades_report.txt");
 				Scanner inputReader = new Scanner(input) 
@@ -53,12 +54,17 @@ public class GradeCalculator {
 			firstName = inputReader.nextLine();
 			lastName = inputReader.nextLine();
 			writer.println(firstName + " " + lastName);
+			System.out.println(firstName + " " + lastName);
 
 			course = configReader.nextLine();
 			writer.println("Course: "+ course);
+			System.out.println("Course: " + course);
 			
 			writer.println();
+			System.out.println();
+			
 			writer.println("Category Results:");
+			System.out.println("Category Results:");
 			
 			categories = configReader.nextInt();
 			configReader.nextLine();
@@ -85,11 +91,13 @@ public class GradeCalculator {
 				catAverage = catAverage/numScores;
 				finalAverage += catAverage * (weight/100.0);
 				
-				writer.println(category + " " + weight + "%: average = " + catAverage);
+				writer.printf("%s %d%%: average = %.2f%n", category, weight, catAverage);
+				System.out.printf("%s %d%%: average = %.2f%n", category, weight, catAverage);
 				writer.println();
 				
 				}
-			writer.println("Final Numeric Average: " + finalAverage);
+			writer.printf("Final Numeric Average: %.2f%n", finalAverage);
+			System.out.printf("Final Numeric Average: %.2f%n", finalAverage);
 			
 			System.out.println("Apply +/- grading? (Y/N)");
 			userInput = userReader.nextLine();
